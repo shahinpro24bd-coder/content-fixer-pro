@@ -11,7 +11,18 @@ function escapeAttr(value: string) {
   return escapeText(value).replace(/"/g, '&quot;');
 }
 
-function elementForKey(body: HTMLElement, key: string): HTMLElement | null {
+function cmsHash(input: string): string {
+  let hash = 5381;
+  for (let i = 0; i < input.length; i++) hash = ((hash * 33) ^ input.charCodeAt(i)) >>> 0;
+  return 'c' + hash.toString(36);
+}
+
+function elementForKey(body: HTMLElement, key: string, page: string): HTMLElement | null {
+  if (!key.includes('/') && !key.includes(':')) {
+    return body.querySelector(`[data-cms-id="${key}"]`) ?? null;
+  }
+  const mapped = body.querySelector(`[data-cms-id="${cmsHash(`${page}|${key}`)}"]`);
+  if (mapped) return mapped;
   let node: HTMLElement = body;
   for (const part of key.split('/')) {
     const [tagRaw, indexRaw] = part.split(':');
@@ -30,7 +41,7 @@ function elementForKey(body: HTMLElement, key: string): HTMLElement | null {
   return node === body ? null : node;
 }
 
-function applyToHtml(html: string, items: PatchItem[]): { html: string; applied: number } {
+function applyToHtml(html: string, items: PatchItem[], page: string): { html: string; applied: number } {
   const root = parse(html, {
     comment: true,
     voidTag: { closingSlash: false },
@@ -69,7 +80,7 @@ function applyToHtml(html: string, items: PatchItem[]): { html: string; applied:
 
   let applied = 0;
   for (const item of items) {
-    const element = elementForKey(body, item.key);
+    const element = elementForKey(body, item.key, page);
     const range = element?.range;
     if (!element || !range) continue;
     const [start, end] = range;
@@ -130,7 +141,7 @@ export async function patchHtmlFiles(page: string, items: PatchItem[]): Promise<
       const full = path.join(dir, file);
       try {
         const source = await fs.readFile(full, 'utf8');
-        const { html, applied } = applyToHtml(source, items);
+        const { html, applied } = applyToHtml(source, items, page);
         if (applied > 0 && html !== source) {
           await fs.writeFile(full, html, 'utf8');
           written.push(file);

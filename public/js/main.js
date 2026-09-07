@@ -428,8 +428,15 @@ if (btnLibrary) {
         var node;
         while ((node = walker.nextNode())) {
             if (!node.parentElement || node.parentElement.closest('script, style, noscript, .theme-settings')) continue;
-            var source = originals.get(node) || node.nodeValue;
-            if (!originals.has(node)) originals.set(node, source);
+            var source = originals.get(node);
+            if (source === undefined) { source = node.nodeValue; originals.set(node, source); }
+            /* English = exactly what the page was written/saved with. Never
+               "un-translate" wording back through the dictionary: that silently
+               rewrote hand-written text. Only Bangla mode uses the dictionary. */
+            if (language === 'en') {
+                if (node.nodeValue !== source) node.nodeValue = source;
+                continue;
+            }
             node.nodeValue = translatedText(source, language);
         }
         document.querySelectorAll('[placeholder], [title], [aria-label], [alt], input[value], button[value]').forEach(function (element) {
@@ -438,7 +445,8 @@ if (btnLibrary) {
                 if (!value) return;
                 var key = 'orig' + attribute.replace(/-/g, '').charAt(0).toUpperCase() + attribute.replace(/-/g, '').slice(1);
                 if (!element.dataset[key]) element.dataset[key] = value;
-                element.setAttribute(attribute, translatedText(element.dataset[key], language).trim());
+                var original = element.dataset[key];
+                element.setAttribute(attribute, language === 'en' ? original : translatedText(original, language).trim());
             });
         });
     }
