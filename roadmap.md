@@ -4,3 +4,4 @@
 
 - [x] Gallery nav links translate to Bangla
 - [x] Removed foreign CMS content; site content namespaced per site
+- [x] Text changing on its own: fixed 4 causes — shared database rows with a cloned site (new unique namespace), positional save keys (permanent data-cms-id stamped in every page), stale localStorage copy of content, and the translator re-wording saved text in English mode
