@@ -31,6 +31,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/html.css" rel="stylesheet">
     <link href="home.css" rel="stylesheet">
+    <link href="css/home-galleries.css" rel="stylesheet">
     <link href="css/site-theme.css" rel="stylesheet" />
     <script src="js/theme-boot.js"></script>
 
@@ -1076,187 +1077,36 @@
 
 </div>
 
-<!-- credentials -->
-
+<!-- Video Gallery preview -->
 <div class="container-fluid py-5 bg-light">
     <div class="container">
-
-
-    <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <h1 class="font-dancing-script text-primary" data-cms-id="c116fdxp">Fellowships & Professional Membership</h1>
-        <h1 class="mb-3" data-cms-id="c116fdxo">Fellowships & Professional Membership</h1>
-    </div>
-
-    <div class="row g-4">
-
-        <!-- FCPS -->
-        <div class="col-md-6 col-lg-4 wow fadeIn">
-            <div class="qual-card">
-                <div class="qual-icon"><i class="fas fa-award"></i></div>
-                <div>
-                    <h6 data-cms-id="cbpgi1g">FCPS (CVS)</h6>
-                    <p data-cms-id="csc4g3e">Fellow, Bangladesh College of Physicians and Surgeons</p>
-                </div>
-            </div>
+        <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
+            <h1 class="font-dancing-script text-primary" data-cms-id="chgvid01">Video Gallery</h1>
+            <h1 class="mb-3" data-cms-id="chgvid02">ভিডিও গ্যালারি</h1>
         </div>
-
-        <!-- FACS -->
-        <div class="col-md-6 col-lg-4 wow fadeIn">
-            <div class="qual-card">
-                <div class="qual-icon"><i class="fas fa-user-md"></i></div>
-                <div>
-                    <h6 data-cms-id="c1tvp4ad">FACS</h6>
-                    <p data-cms-id="c1yvhy9n">Fellow, American College of Surgeons, USA</p>
-                </div>
-            </div>
+        <div class="hg-grid" id="homeVideoGrid"></div>
+        <p class="hg-empty" id="homeVideoEmpty" hidden data-cms-id="chgvid03">এখনো কোনো ভিডিও যুক্ত করা হয়নি।</p>
+        <div class="hg-more" id="homeVideoMore" hidden>
+            <a class="btn btn-primary rounded-pill py-2 px-4" href="video.html" data-cms-id="chgvid04">View More</a>
         </div>
-
-        <!-- Fortis Escorts -->
-        <div class="col-md-6 col-lg-4 wow fadeIn">
-            <div class="qual-card">
-                <div class="qual-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                <div>
-                    <h6 data-cms-id="cv1z5hy">Pediatric Cardiac Surgery Fellowship</h6>
-                    <p data-cms-id="cmgrjw8">Fortis Escorts Hospital, New Delhi</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Seoul National -->
-        <div class="col-md-6 col-lg-4 wow fadeIn">
-            <div class="qual-card">
-                <div class="qual-icon"><i class="fas fa-star-of-life"></i></div>
-                <div>
-                    <h6 data-cms-id="ce73prr">Clinical Fellowship</h6>
-                    <p data-cms-id="c1t0522h">Seoul National University Hospital, South Korea</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- IJN -->
-        <div class="col-md-6 col-lg-4 wow fadeIn">
-            <div class="qual-card">
-                <div class="qual-icon"><i class="fas fa-spa"></i></div>
-                <div>
-                    <h6 data-cms-id="c5t74k0">Registrar / Clinical Fellow</h6>
-                    <p data-cms-id="c1x1yv7i">National Heart Institute (IJN), Kuala Lumpur, Malaysia</p>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
-</div>
-
-<!-- Specialized Training & Workshop -->
-
+<!-- Patient Gallery preview -->
 <div class="container-fluid py-5">
     <div class="container">
-
-    <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
-        <h1 class="font-dancing-script text-primary" data-cms-id="c1uey02">Specialized Training & Workshop</h1>
-        <h1 class="mb-3" data-cms-id="c1uey03">Specialized Training & Workshop</h1>
-    </div>
-
-    <div class="row g-4">
-
-        <!-- Seoul National University Hospital, South Korea -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-ribbon"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="c1j7jcjc">Clinical cardiac surgery Fellowship</h5>
-                    <p class="membership-name" data-cms-id="c84pho5">Seoul National University Hospital, South Korea</p>
-                </div>
-            </div>
+        <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.1s">
+            <h1 class="font-dancing-script text-primary" data-cms-id="chgpat01">Patient Gallery</h1>
+            <h1 class="mb-3" data-cms-id="chgpat02">রোগী গ্যালারি</h1>
         </div>
-
-        <!-- National Heart Institute (IJN), Malaysia -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.2s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-hand"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="c11aryx">Clinical cardiac surgery Fellowship</h5>
-                    <p class="membership-name" data-cms-id="c10mg1h0">National Heart Institute (IJN), Kuala Lumpur, Malaysia</p>
-                </div>
-            </div>
+        <div class="hg-grid" id="homePatientGrid"></div>
+        <p class="hg-empty" id="homePatientEmpty" hidden data-cms-id="chgpat03">এখনো কোনো রোগীর তথ্য যুক্ত করা হয়নি।</p>
+        <div class="hg-more" id="homePatientMore" hidden>
+            <a class="btn btn-primary rounded-pill py-2 px-4" href="patient.html" data-cms-id="chgpat04">View More</a>
         </div>
-
-        <!-- Fortis Escorts Hospital, India -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-microscope"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="czv0lx6">Clinical cardiac surgery Fellowship</h5>
-                    <p class="membership-name" data-cms-id="ce02dvb">Fortis Escorts Hospital, New Delhi, India</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- MICS Training -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.4s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-procedures"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="c1gpw3bv">Minimally Invasive Cardiac Surgery (MICS) Training & Experience</h5>
-                    <p class="membership-name" data-cms-id="c16hsxo6">Bangladesh's 1st MICS VSD Closure Surgery</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Research: MICS vs Median Sternotomy VSD -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-user-injured"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="c1p3sq0s">Research: MICS vs Standard Median Sternotomy for VSD Repair</h5>
-                    <p class="membership-name" data-cms-id="c12fz4j5">Comparative Clinical Study</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Research: Right Vertical Infra-axillary -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.6s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="c6xk5gd">Right Vertical Infra-axillary Mini-incision</h5>
-                    <p class="membership-name" data-cms-id="c1uxpoc0">Congenital Heart Defect Repair — Research</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Research: MICS ASD Outcomes -->
-        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.7s">
-            <div class="membership-card">
-                <div class="membership-icon">
-                    <i class="fas fa-user-injured"></i>
-                </div>
-                <div class="membership-body">
-                    <h5 class="membership-org" data-cms-id="c15r9zem">Clinical Outcome of Minimally Invasive ASD Repair</h5>
-                    <p class="membership-name" data-cms-id="c18bc0qb">Research Publication</p>
-                </div>
     </div>
 </div>
 
-    </div>
-</div>
-
-
-</div>
 
 
 
@@ -1948,6 +1798,7 @@ document.querySelectorAll('.chamber-btn').forEach(function(button) {
     <script src="js/site-fonts.js"></script>
     <script src="js/site-settings.js"></script>
     <script src="js/reviews.js"></script>
+    <script src="js/home-galleries.js"></script>
 <script>
     (function () {
         var box = document.querySelector('[data-hero-slider]');
