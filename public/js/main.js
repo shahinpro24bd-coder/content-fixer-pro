@@ -428,6 +428,8 @@ if (btnLibrary) {
         var node;
         while ((node = walker.nextNode())) {
             if (!node.parentElement || node.parentElement.closest('script, style, noscript, .theme-settings')) continue;
+            /* Text saved from the editor is final — leave it exactly as saved. */
+            if (node.parentElement.closest('[data-cms-applied]')) continue;
             var source = originals.get(node);
             if (source === undefined) { source = node.nodeValue; originals.set(node, source); }
             /* English = exactly what the page was written/saved with. Never
