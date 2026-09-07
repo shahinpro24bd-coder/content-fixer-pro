@@ -50,8 +50,14 @@ export function json(body: unknown, init: ResponseInit = {}): Response {
 }
 
 /** Content rows are namespaced per site so a database shared with another
- *  project can never overwrite this site's pages (e.g. two "index" pages). */
-export const SITE_NS = 'drselim';
+ *  project can never overwrite this site's pages (e.g. two "index" pages).
+ *
+ *  IMPORTANT: a copy of this project (another doctor's site) was running with
+ *  the old 'drselim' namespace against the same database, so its edits kept
+ *  landing on this site's pages and rewrote text on their own. The namespace
+ *  below is unique to this site; never reuse it in a cloned project — set
+ *  CMS_SITE_NS to a new value there instead. */
+export const SITE_NS = (process.env['CMS_SITE_NS'] ?? '').trim() || 'drselim-mics-2026';
 
 export function sitePage(page: string): string {
   const clean = (page ?? '').trim();
