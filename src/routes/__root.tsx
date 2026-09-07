@@ -77,21 +77,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        title: "Prof. Dr. Md. Rokonujjaman (Selim) | MICS Cardiac Surgeon, Dhaka",
+      },
+      {
+        name: "description",
+        content:
+          "Minimally Invasive Cardiac Surgery (MICS) for selected adult & congenital heart disease at Ibrahim Cardiac Hospital & Research Institute, Dhaka.",
+      },
+      { name: "author", content: "Professor Dr. Md. Rokonujjaman (Selim)" },
+      {
+        property: "og:title",
+        content: "Prof. Dr. Md. Rokonujjaman (Selim) | MICS Cardiac Surgeon, Dhaka",
+      },
+      {
+        property: "og:description",
+        content:
+          "Minimally Invasive Cardiac Surgery (MICS) for selected adult & congenital heart disease at Ibrahim Cardiac Hospital & Research Institute, Dhaka.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,

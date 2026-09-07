@@ -12,3 +12,11 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+User-agent: *
+Disallow: /index2.html
+Disallow: /about2.html
+Disallow: /service2.html
+Disallow: /gallery2.html
+Disallow: /contact2.html
+Disallow: /appoinment2.html
