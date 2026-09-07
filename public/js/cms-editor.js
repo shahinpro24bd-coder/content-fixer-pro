@@ -38,7 +38,10 @@
     var INLINE = { A: 1, SPAN: 1, STRONG: 1, EM: 1, B: 1, I: 1, SMALL: 1, BR: 1, U: 1, SUP: 1, SUB: 1, MARK: 1, CODE: 1 };
 
     function inUi(element) {
-        return !!(element.closest && element.closest('#cmsBar, #cmsLogin, #cmsPencil, #stgBtn, #stgPanel, [data-cms-ignore]'));
+        /* .owl-item.cloned / .slick-cloned are duplicates the carousel creates at
+           runtime. Editing a clone saved a key that pointed at a different element
+           on the next load, which made text appear to change on its own. */
+        return !!(element.closest && element.closest('#cmsBar, #cmsLogin, #cmsPencil, #stgBtn, #stgPanel, [data-cms-ignore], .owl-item.cloned, .slick-cloned'));
     }
 
     function directText(element) {

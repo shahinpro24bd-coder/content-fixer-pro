@@ -8,7 +8,17 @@
         return file.replace(/2$/, '');
     }
 
+    function cmsHash(input) {
+        var hash = 5381;
+        for (var i = 0; i < input.length; i++) hash = ((hash * 33) ^ input.charCodeAt(i)) >>> 0;
+        return 'c' + hash.toString(36);
+    }
+
+    /* Stable key: the permanent data-cms-id stamped into the HTML. Falls back to
+       a positional path only for elements that were never stamped. */
     function keyFor(element) {
+        var stable = element.getAttribute && element.getAttribute('data-cms-id');
+        if (stable) return stable;
         var parts = [];
         var node = element;
         while (node && node !== document.body) {
@@ -26,6 +36,13 @@
     }
 
     function elementForKey(key) {
+        if (key.indexOf('/') === -1 && key.indexOf(':') === -1) {
+            return document.querySelector('[data-cms-id="' + key + '"]');
+        }
+        /* Legacy positional key: the stamped ids were derived from exactly these
+           keys, so an old saved row still finds its original element. */
+        var mapped = document.querySelector('[data-cms-id="' + cmsHash(pageName() + '|' + key) + '"]');
+        if (mapped) return mapped;
         var node = document.body;
         var parts = key.split('/');
         for (var p = 0; p < parts.length; p++) {
@@ -70,23 +87,20 @@
         return true;
     }
 
-    function cacheKey() { return 'cms:' + pageName(); }
-
-    function readCache() {
-        try {
-            var raw = window.localStorage.getItem(cacheKey());
-            if (!raw) return null;
-            var parsed = JSON.parse(raw);
-            return Array.isArray(parsed) ? parsed : null;
-        } catch (e) { return null; }
-    }
-
-    function writeCache(items) {
-        try { window.localStorage.setItem(cacheKey(), JSON.stringify(items || [])); } catch (e) { /* quota */ }
+    /* No localStorage copy of the content: a stale cache used to repaint old
+       text over freshly saved content. The server is the only source. */
+    function clearOldCache() {
+        try { window.localStorage.removeItem('cms:' + pageName()); } catch (e) { /* ignore */ }
     }
 
     function applyAll(items) {
-        items.forEach(applyItem);
+        items.forEach(function (item) {
+            if (applyItem(item)) {
+                var element = elementForKey(item.content_key);
+                /* Saved content must never be re-worded by the translator. */
+                if (element) element.setAttribute('data-cms-applied', '1');
+            }
+        });
         window.SiteCMS.items = items;
         if (items.length && typeof window.switchSiteLanguage === 'function') {
             window.switchSiteLanguage(document.documentElement.lang === 'bn' ? 'bn' : 'en');
@@ -107,21 +121,12 @@
         load: load
     };
 
-    /* Paint the last known content immediately so reloads never flash old text. */
-    var cached = readCache();
-    if (cached && cached.length) {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function () { applyAll(cached); });
-        } else {
-            applyAll(cached);
-        }
-    }
+    clearOldCache();
 
     load().then(function (data) {
         var items = (data && data.items) || [];
         var run = function () {
             applyAll(items);
-            writeCache(items);
             window.SiteCMS.loaded = true;
             document.dispatchEvent(new CustomEvent('cms:loaded', { detail: data }));
             if (window.SiteBoot) window.SiteBoot.done('cms');
