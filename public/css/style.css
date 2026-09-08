@@ -545,10 +545,10 @@
     gap: 2px;
     margin-left: 12px;
     padding: 3px;
-    border: 1px solid var(--bs-primary);
+    border: 1px solid rgba(0, 0, 0, .18);
     border-radius: 4px;
-    background: var(--bs-white);
-    box-shadow: 0 4px 14px rgba(8, 63, 67, .08);
+    background: transparent;
+    box-shadow: none;
 }
 
 .language-switcher button {
@@ -557,7 +557,7 @@
     border-radius: 3px;
     padding: 5px 8px;
     background: transparent;
-    color: var(--bs-primary);
+    color: inherit;
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
@@ -565,9 +565,11 @@
 
 .language-switcher button:hover,
 .language-switcher button.active {
-    background: var(--bs-primary);
-    color: var(--bs-white);
+    background: transparent;
+    color: inherit;
+    text-decoration: underline;
 }
+
 
 .footer.wow {
     visibility: visible !important;
