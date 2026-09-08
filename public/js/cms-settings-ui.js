@@ -51,7 +51,8 @@
         '<header><h4>সাইট সেটিংস</h4><button type="button" class="stg-x">&times;</button></header>' +
         '<div id="stgTabs"><button type="button" data-tab="font" class="active">ফন্ট</button>' +
         '<button type="button" data-tab="color">থিম কালার</button>' +
-        '<button type="button" data-tab="footer">ফুটার</button></div>' +
+        '<button type="button" data-tab="footer">ফুটার</button>' +
+        '<button type="button" data-tab="achv">অ্যাচিভমেন্ট</button></div>' +
         '<div class="stg-body" data-pane="font">' +
         '<p class="stg-note">১০০+ বাংলা ও ইংরেজি ফন্ট। বাছাই করলেই সাথে সাথে প্রিভিউ দেখা যাবে, সেভ করলে সব পেইজে (মূল ফাইলেও) বসে যাবে।</p>' +
         '<div class="stg-field"><label>বডি / সাধারণ লেখা</label><select id="stgFontBody"></select>' +
@@ -77,6 +78,24 @@
         '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
         ['#FFFFFF', '#F1F5F9', '#FDE68A', '#BBF7D0', '#BAE6FD', '#FECACA', '#000000', '#334155'].map(function (c) {
             return '<button type="button" class="stg-color" data-ftext="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
+        }).join('') + '</div></div>' +
+        '</div>' +
+        '<div class="stg-body" data-pane="achv" style="display:none">' +
+        '<p class="stg-note">হোম পেইজের "Our Achievements" সেকশনের নিজস্ব কালার — থিম কালার বদলালেও এটি আলাদা থাকবে।</p>' +
+        '<div class="stg-field"><label>সেকশন ব্যাকগ্রাউন্ড কালার</label><input type="color" id="stgAchvBg" value="#083F43">' +
+        '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+        ['#083F43', '#0F172A', '#111827', '#1E293B', '#312E81', '#4A044E', '#7F1D1D', '#052E16'].map(function (c) {
+            return '<button type="button" class="stg-color" data-abg="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
+        }).join('') + '</div></div>' +
+        '<div class="stg-field"><label>অ্যাকসেন্ট কালার (নাম্বার লাইন / লেবেল)</label><input type="color" id="stgAchvAccent" value="#E7C374">' +
+        '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+        ['#E7C374', '#FDE68A', '#7FD4D4', '#93C5FD', '#F9A8D4', '#86EFAC', '#FCA5A5', '#FFFFFF'].map(function (c) {
+            return '<button type="button" class="stg-color" data-aacc="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
+        }).join('') + '</div></div>' +
+        '<div class="stg-field"><label>টেক্সট কালার (শিরোনাম ও সংখ্যা)</label><input type="color" id="stgAchvText" value="#FFFFFF">' +
+        '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+        ['#FFFFFF', '#F1F5F9', '#FDE68A', '#BAE6FD', '#111827'].map(function (c) {
+            return '<button type="button" class="stg-color" data-atext="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
         }).join('') + '</div></div>' +
         '</div>' +
         '<div class="stg-foot"><button type="button" id="stgReset">রিসেট</button><button type="button" id="stgSave">সেভ করুন</button></div>';
@@ -144,6 +163,9 @@
         if (draft.theme) panel.querySelector('#stgCustom').value = draft.theme;
         if (draft.footerBg) panel.querySelector('#stgFooterBg').value = draft.footerBg;
         if (draft.footerText) panel.querySelector('#stgFooterText').value = draft.footerText;
+        if (draft.achvBg) panel.querySelector('#stgAchvBg').value = draft.achvBg;
+        if (draft.achvAccent) panel.querySelector('#stgAchvAccent').value = draft.achvAccent;
+        if (draft.achvText) panel.querySelector('#stgAchvText').value = draft.achvText;
         pushDraft();
     }
 
@@ -185,6 +207,25 @@
         });
     });
 
+    /* "Our Achievements" section colours — kept apart from the theme colour. */
+    [['#stgAchvBg', 'achvBg', 'data-abg'],
+     ['#stgAchvAccent', 'achvAccent', 'data-aacc'],
+     ['#stgAchvText', 'achvText', 'data-atext']].forEach(function (row) {
+        var input = panel.querySelector(row[0]);
+        input.addEventListener('input', function (event) {
+            draft[row[1]] = event.target.value;
+            pushDraft();
+        });
+        panel.querySelectorAll('[' + row[2] + ']').forEach(function (swatch) {
+            swatch.addEventListener('click', function () {
+                draft[row[1]] = swatch.getAttribute(row[2]);
+                input.value = draft[row[1]];
+                pushDraft();
+            });
+        });
+    });
+
+
     panel.querySelector('#stgTabs').addEventListener('click', function (event) {
         var tab = event.target.closest('button[data-tab]');
         if (!tab) return;
@@ -208,7 +249,10 @@
     panel.querySelector('.stg-x').addEventListener('click', close);
 
     panel.querySelector('#stgReset').addEventListener('click', function () {
-        draft = { theme: '', fontBody: '', fontHeading: '', fontBn: '', footerBg: '', footerText: '' };
+        draft = {
+            theme: '', fontBody: '', fontHeading: '', fontBn: '', footerBg: '', footerText: '',
+            achvBg: '', achvAccent: '', achvText: ''
+        };
         syncForm();
     });
 
@@ -220,7 +264,10 @@
             fontHeading: draft.fontHeading || '',
             fontBn: draft.fontBn || '',
             footerBg: draft.footerBg || '',
-            footerText: draft.footerText || ''
+            footerText: draft.footerText || '',
+            achvBg: draft.achvBg || '',
+            achvAccent: draft.achvAccent || '',
+            achvText: draft.achvText || ''
         };
         saveButton.disabled = true;
         fetch('/api/public/cms/settings', {
