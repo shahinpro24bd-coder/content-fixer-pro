@@ -249,7 +249,10 @@
     panel.querySelector('.stg-x').addEventListener('click', close);
 
     panel.querySelector('#stgReset').addEventListener('click', function () {
-        draft = { theme: '', fontBody: '', fontHeading: '', fontBn: '', footerBg: '', footerText: '' };
+        draft = {
+            theme: '', fontBody: '', fontHeading: '', fontBn: '', footerBg: '', footerText: '',
+            achvBg: '', achvAccent: '', achvText: ''
+        };
         syncForm();
     });
 
