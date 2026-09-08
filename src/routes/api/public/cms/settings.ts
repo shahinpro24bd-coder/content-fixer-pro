@@ -1,7 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router';
 
 const PAGE = 'drselim:__site';
-const KEYS = ['theme', 'fontBody', 'fontHeading', 'fontBn', 'footerBg', 'footerText'];
+const KEYS = [
+  'theme',
+  'fontBody',
+  'fontHeading',
+  'fontBn',
+  'footerBg',
+  'footerText',
+  // "Our Achievements" section colours — saved separately from the site theme.
+  'achvBg',
+  'achvAccent',
+  'achvText',
+];
 
 type Settings = Record<string, string>;
 
