@@ -163,6 +163,9 @@
         if (draft.theme) panel.querySelector('#stgCustom').value = draft.theme;
         if (draft.footerBg) panel.querySelector('#stgFooterBg').value = draft.footerBg;
         if (draft.footerText) panel.querySelector('#stgFooterText').value = draft.footerText;
+        if (draft.achvBg) panel.querySelector('#stgAchvBg').value = draft.achvBg;
+        if (draft.achvAccent) panel.querySelector('#stgAchvAccent').value = draft.achvAccent;
+        if (draft.achvText) panel.querySelector('#stgAchvText').value = draft.achvText;
         pushDraft();
     }
 
