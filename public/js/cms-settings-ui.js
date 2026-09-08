@@ -51,7 +51,8 @@
         '<header><h4>সাইট সেটিংস</h4><button type="button" class="stg-x">&times;</button></header>' +
         '<div id="stgTabs"><button type="button" data-tab="font" class="active">ফন্ট</button>' +
         '<button type="button" data-tab="color">থিম কালার</button>' +
-        '<button type="button" data-tab="footer">ফুটার</button></div>' +
+        '<button type="button" data-tab="footer">ফুটার</button>' +
+        '<button type="button" data-tab="achv">অ্যাচিভমেন্ট</button></div>' +
         '<div class="stg-body" data-pane="font">' +
         '<p class="stg-note">১০০+ বাংলা ও ইংরেজি ফন্ট। বাছাই করলেই সাথে সাথে প্রিভিউ দেখা যাবে, সেভ করলে সব পেইজে (মূল ফাইলেও) বসে যাবে।</p>' +
         '<div class="stg-field"><label>বডি / সাধারণ লেখা</label><select id="stgFontBody"></select>' +
