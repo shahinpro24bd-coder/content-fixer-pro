@@ -5,7 +5,11 @@
 
     var API = '/api/public/cms/settings';
     var CACHE = 'site:settings:v1';
-    var DEFAULTS = { theme: '', fontBody: '', fontHeading: '', fontBn: '', footerBg: '', footerText: '' };
+    var DEFAULTS = {
+        theme: '', fontBody: '', fontHeading: '', fontBn: '', footerBg: '', footerText: '',
+        /* "Our Achievements" section — its own colours, independent of the theme. */
+        achvBg: '', achvAccent: '', achvText: ''
+    };
     var loaded = {};
 
     function catalogue() {
