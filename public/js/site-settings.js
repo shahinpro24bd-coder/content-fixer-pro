@@ -132,6 +132,28 @@
             ].join(''));
         }
 
+        /* "Our Achievements" section colours — saved on their own, so this block
+           no longer follows the site theme once a colour is chosen. */
+        if (settings.achvBg) {
+            var abg = settings.achvBg;
+            var argb = hexToRgb(abg);
+            var ahsl = argb ? rgbToHsl(argb) : null;
+            var adark = ahsl ? rgbToHex(hslToRgb(ahsl[0], ahsl[1], Math.max(0.05, ahsl[2] - 0.18))) : abg;
+            out.push('.achv2-section{background:' +
+                'radial-gradient(1100px 420px at 85% -10%,color-mix(in srgb,' + abg + ' 65%,transparent),transparent 60%),' +
+                'linear-gradient(180deg,' + adark + ' 0%,' + abg + ' 55%,' + adark + ' 100%) !important;}');
+            out.push('.achv2-glow-1{background:' + abg + ' !important;}');
+        }
+        if (settings.achvAccent) {
+            out.push('.achv2-section{--achv2-gold:' + settings.achvAccent + ' !important;--achv2-gold-2:' + settings.achvAccent + ' !important;}');
+            out.push('.achv2-glow-2{background:' + settings.achvAccent + ' !important;}');
+        }
+        if (settings.achvText) {
+            out.push('.achv2-title,.achv2-number{color:' + settings.achvText + ' !important;}');
+            out.push('.achv2-sub{color:color-mix(in srgb,' + settings.achvText + ' 70%,transparent) !important;}');
+        }
+
+
         /* Page loader always follows the theme colour. */
         out.push('#spinner .spinner-grow,#spinner .spinner-border,#spinner .text-primary{color:var(--theme-primary) !important;background-color:currentColor;}');
         out.push('#spinner .spinner-border{background-color:transparent !important;border-color:currentColor;border-right-color:transparent;}');
