@@ -80,6 +80,24 @@
             return '<button type="button" class="stg-color" data-ftext="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
         }).join('') + '</div></div>' +
         '</div>' +
+        '<div class="stg-body" data-pane="achv" style="display:none">' +
+        '<p class="stg-note">হোম পেইজের "Our Achievements" সেকশনের নিজস্ব কালার — থিম কালার বদলালেও এটি আলাদা থাকবে।</p>' +
+        '<div class="stg-field"><label>সেকশন ব্যাকগ্রাউন্ড কালার</label><input type="color" id="stgAchvBg" value="#083F43">' +
+        '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+        ['#083F43', '#0F172A', '#111827', '#1E293B', '#312E81', '#4A044E', '#7F1D1D', '#052E16'].map(function (c) {
+            return '<button type="button" class="stg-color" data-abg="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
+        }).join('') + '</div></div>' +
+        '<div class="stg-field"><label>অ্যাকসেন্ট কালার (নাম্বার লাইন / লেবেল)</label><input type="color" id="stgAchvAccent" value="#E7C374">' +
+        '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+        ['#E7C374', '#FDE68A', '#7FD4D4', '#93C5FD', '#F9A8D4', '#86EFAC', '#FCA5A5', '#FFFFFF'].map(function (c) {
+            return '<button type="button" class="stg-color" data-aacc="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
+        }).join('') + '</div></div>' +
+        '<div class="stg-field"><label>টেক্সট কালার (শিরোনাম ও সংখ্যা)</label><input type="color" id="stgAchvText" value="#FFFFFF">' +
+        '<div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">' +
+        ['#FFFFFF', '#F1F5F9', '#FDE68A', '#BAE6FD', '#111827'].map(function (c) {
+            return '<button type="button" class="stg-color" data-atext="' + c + '" style="background:' + c + ';width:34px;height:34px"></button>';
+        }).join('') + '</div></div>' +
+        '</div>' +
         '<div class="stg-foot"><button type="button" id="stgReset">রিসেট</button><button type="button" id="stgSave">সেভ করুন</button></div>';
     document.body.appendChild(panel);
 
