@@ -39,3 +39,27 @@
 
 .hg-empty { text-align: center; color: #6b7280; margin: 0; }
 .hg-more { text-align: center; margin-top: 2rem; }
+
+/*** International Fellowship ***/
+.intl-fellow { background: var(--bs-light); }
+.intl-card {
+    height: 100%;
+    padding: 26px 18px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.intl-card:hover { transform: translateY(-6px); box-shadow: 0 16px 38px rgba(0,0,0,.12); }
+.intl-flag {
+    width: 68px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.18);
+    margin-bottom: 14px;
+}
+.intl-country { margin-bottom: 6px; font-size: 1.05rem; }
+.intl-place { margin: 0; font-size: .9rem; color: #6c757d; }
