@@ -207,6 +207,25 @@
         });
     });
 
+    /* "Our Achievements" section colours — kept apart from the theme colour. */
+    [['#stgAchvBg', 'achvBg', 'data-abg'],
+     ['#stgAchvAccent', 'achvAccent', 'data-aacc'],
+     ['#stgAchvText', 'achvText', 'data-atext']].forEach(function (row) {
+        var input = panel.querySelector(row[0]);
+        input.addEventListener('input', function (event) {
+            draft[row[1]] = event.target.value;
+            pushDraft();
+        });
+        panel.querySelectorAll('[' + row[2] + ']').forEach(function (swatch) {
+            swatch.addEventListener('click', function () {
+                draft[row[1]] = swatch.getAttribute(row[2]);
+                input.value = draft[row[1]];
+                pushDraft();
+            });
+        });
+    });
+
+
     panel.querySelector('#stgTabs').addEventListener('click', function (event) {
         var tab = event.target.closest('button[data-tab]');
         if (!tab) return;
