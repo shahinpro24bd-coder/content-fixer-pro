@@ -264,7 +264,10 @@
             fontHeading: draft.fontHeading || '',
             fontBn: draft.fontBn || '',
             footerBg: draft.footerBg || '',
-            footerText: draft.footerText || ''
+            footerText: draft.footerText || '',
+            achvBg: draft.achvBg || '',
+            achvAccent: draft.achvAccent || '',
+            achvText: draft.achvText || ''
         };
         saveButton.disabled = true;
         fetch('/api/public/cms/settings', {
