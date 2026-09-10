@@ -11,4 +11,4 @@ Disallow: /patient2.html
 Disallow: /video2.html
 Disallow: /api/
 
-Sitemap: https://www.drselim74.com/sitemap.xml
+Sitemap: https://profdrselim.com/sitemap.xml
