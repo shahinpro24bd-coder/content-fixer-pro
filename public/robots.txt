@@ -1,22 +1,14 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
 
-User-agent: *
 Disallow: /index2.html
 Disallow: /about2.html
 Disallow: /service2.html
 Disallow: /gallery2.html
 Disallow: /contact2.html
 Disallow: /appoinment2.html
+Disallow: /patient2.html
+Disallow: /video2.html
+Disallow: /api/
+
+Sitemap: https://www.drselim74.com/sitemap.xml
